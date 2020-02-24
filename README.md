@@ -27,12 +27,13 @@ Review = {
 	content = CharField()
 	title = CharField()
 	stars = IntegerField()
+	company = fk
 }
 
 Scraped_Reviews = {
 	number_of_salary_reported= IntegerField()
 	number_of_benefits_reported = IntegerField() 
-	overall_interview_difficulty = IntegerField()
+	number_of_interview = IntegerField()
 	review = fk
 	source =  fk
 	company = fk
