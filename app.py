@@ -1,9 +1,32 @@
-from flask import Flask 
-from models import User, initialize
+from flask import Flask, g
+from flask_login import LoginManager
+from models import User, initialize, DATABASE
 from resources.users import users
 DEBUG = True
 PORT = 8000
 app = Flask(__name__)
+
+# ==============================
+# 				LOGIN MANAGER
+# ==============================
+app.secret_key = 'This is our penguin club.'
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(userid):
+  try:
+    return Penguin.get(Penguin.id == userid)
+  except DoesNotExist:
+    return None
+
+@login_manager.unauthorized_handler
+def unauthorized():
+  return jsonify(
+    data={"error": "User not logged in"},
+    message="User must be logged in to access that resource",
+    status=401
+  ), 401
 
 # ==============================
 # 			REGISTER BLUEPRINTS
@@ -11,6 +34,21 @@ app = Flask(__name__)
 
 # Users
 app.register_blueprint(users, url_prefix='/api/v1/users')
+
+# ==============================
+# 			DATABASE CONNECTION
+# ==============================
+
+@app.before_request
+def before_request():
+  g.db = DATABASE
+  g.db.connect()
+
+
+@app.after_request
+def after_request(response):
+  g.db.close()
+  return response
 
 # ==============================
 # 						ROUTES

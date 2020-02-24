@@ -25,7 +25,6 @@ class User(UserMixin, Model):
 	email = CharField()
 	about_me = TextField()
 
-
 	class Meta:
 		database = DATABASE
 
