@@ -1,6 +1,6 @@
 from flask import Flask, g
 from flask_login import LoginManager
-from models import User, initialize, DATABASE
+from models import User, DoesNotExist, initialize, DATABASE
 from resources.users import users
 DEBUG = True
 PORT = 8000
@@ -9,14 +9,14 @@ app = Flask(__name__)
 # ==============================
 # 				LOGIN MANAGER
 # ==============================
-app.secret_key = 'This is our penguin club.'
+app.secret_key = 'This is our user club.'
 login_manager = LoginManager()
 login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(userid):
   try:
-    return Penguin.get(Penguin.id == userid)
+    return User.get(User.id == userid)
   except DoesNotExist:
     return None
 

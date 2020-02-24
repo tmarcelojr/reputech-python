@@ -1,7 +1,7 @@
 from models import User, DoesNotExist
 from flask import Blueprint, request, jsonify
 from flask_bcrypt import generate_password_hash, check_password_hash
-from flask_login import login_user
+from flask_login import login_user, logout_user
 from playhouse.shortcuts import model_to_dict
 
 # ==============================
@@ -82,7 +82,15 @@ def login():
         status=401
       ), 401
 
-
+# Logout
+@users.route('/logout', methods=['GET'])
+def logout():
+  logout_user()
+  return jsonify(
+    data={},
+    message="Successfully logged out",
+    status=200
+  ), 200
 
 
 
