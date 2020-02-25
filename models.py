@@ -13,6 +13,11 @@ from playhouse.db_url import connect
 # ==============================
 
 DATABASE = SqliteDatabase('users.sqlite')
+DATABASE = SqliteDatabase('reviews.sqlite')
+# DATABASE = SqliteDatabase('companies.sqlite')
+# DATABASE = SqliteDatabase('sources.sqlite')
+# DATABASE = SqliteDatabase('favorites.sqlite')
+# DATABASE = SqliteDatabase('collected_reviews.sqlite')
 
 # ==============================
 # 						MODELS
@@ -58,6 +63,20 @@ class Review(Model):
 class Favorite(Model):
 	user = ForeignKeyField(User, backref='favorites')
 
+	class Meta:
+		database = DATABASE
+
+# Scraped reviews
+class Collected_Review(Model):
+	number_of_salary_ratings= IntegerField()
+	number_of_benefits_ratings = IntegerField() 
+	number_of_interview_ratings = IntegerField()
+	review = ForeignKeyField(Review, backref='collected_reviews')
+	source =  ForeignKeyField(Source, backref='collected_reviews')
+	company = ForeignKeyField(Company, backref='collected_reviews')
+
+	class Meta:
+		database = DATABASE
 
 # ==============================
 # 					CONNECTION
@@ -65,6 +84,6 @@ class Favorite(Model):
 
 def initialize():
   DATABASE.connect()
-  DATABASE.create_tables([User], safe=True)
+  DATABASE.create_tables([User, Company, Source, Review, Favorite, Collected_Review], safe=True)
   print("Connected to DB and created tables if they weren't already there")
   DATABASE.close()
