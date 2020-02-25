@@ -1,4 +1,4 @@
-from flask import Flask, g
+from flask import Flask, g, jsonify
 from flask_login import LoginManager
 from models import User, DoesNotExist, initialize, DATABASE
 from resources.users import users

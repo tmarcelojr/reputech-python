@@ -62,6 +62,7 @@ class Review(Model):
 # Favorite
 class Favorite(Model):
 	user = ForeignKeyField(User, backref='favorites')
+	company = ForeignKeyField(Company, backref='favorites')
 
 	class Meta:
 		database = DATABASE
