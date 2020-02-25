@@ -1,7 +1,7 @@
 from models import User, DoesNotExist
 from flask import Blueprint, request, jsonify
 from flask_bcrypt import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user
+from flask_login import login_user, current_user, logout_user
 from playhouse.shortcuts import model_to_dict
 
 # ==============================
@@ -17,7 +17,7 @@ users = Blueprint('users', 'users')
 # Index
 @users.route('/', methods=['GET'])
 def test_user_resource():
-	return "We have a resource for users!"
+	return 'We have a resource for users!'
 
 # Register User
 @users.route('/register', methods=['POST'])
@@ -60,7 +60,7 @@ def login():
 		user_dict = model_to_dict(user)
 		password_is_good = check_password_hash(user_dict['password'], payload['password'])
 		if password_is_good:
-			login_user(user)
+			login_user(user, remember=True) # Creates a cookie for the user to remain logged in
 			user_dict.pop('password')
 			return jsonify(
 					data=user_dict,
@@ -71,16 +71,34 @@ def login():
   		# This means password is not correct.
 			return jsonify(
       	data={},
-        message="Username or password is incorrect",
+        message='Username or password is incorrect',
         status=401
       	), 401
 	except DoesNotExist:
 	# Username not correct
 		return jsonify(
         data={},
-        message="Username or password is incorrect",
+        message='Username or password is incorrect',
         status=401
       ), 401
+
+# Check current user
+@users.route('/logged_in', methods=['GET'])
+def get_logged_in_user():
+  if not current_user.is_authenticated:
+    return jsonify(
+      data={},
+      message='No user is currently logged in',
+      status=401
+    ), 401
+  else:
+    user_dict = model_to_dict(current_user)
+    user_dict.pop('password')
+    return jsonify(
+      data=user_dict,
+      message=f"Current user is {user_dict['username']}", 
+      status=200
+    ), 200
 
 # Logout
 @users.route('/logout', methods=['GET'])
@@ -88,11 +106,12 @@ def logout():
   logout_user()
   return jsonify(
     data={},
-    message="Successfully logged out",
+    message='Successfully logged out',
     status=200
   ), 200
 
-
+# Delete
+# Save this for later when we have reviews behind added. So we can do cascading deletion.
 
 
 

@@ -2,7 +2,17 @@
 
 ## Description
 
-API will be created using python. Scraping will be completed with beautiful soup. Scraped results will be distributed to appropiate fields in Company Card. 
+API will be created using python. Scraping will be completed with beautiful soup. Scraped results will be distributed to appropiate fields in Company Card.
+
+### Development Process
+   DATE 		 | 		  PROGRESS     |     BLOCKS 		 |  	 GOALS     |
+------------ | ----------------- | --------------- | ------------- |
+02/25/2020 | User auth completed. Researched scraping, explored website structures, and scraped some data needed. | None | **3 day sprint**: Review model CRUD, favorites model routes, scrape more data from multiple sources and store in database |
+02/26/2020 | | | |
+02/27/2020 | | | |
+02/28/2020 | | | |
+
+
 
 ## Models
 ```
@@ -27,21 +37,21 @@ Review = {
 	content = CharField()
 	title = CharField()
 	stars = IntegerField()
-	company = fk
+	company = ForeignKeyField(Company, backref='reviews')
 }
 
 Scraped_Reviews = {
 	number_of_salary_reported= IntegerField()
 	number_of_benefits_reported = IntegerField() 
 	number_of_interview = IntegerField()
-	review = fk
-	source =  fk
-	company = fk
+	review = ForeignKeyField(Review, backref='scraped_reviews')
+	source =  ForeignKeyField(Source, backref='scraped_reviews')
+	company = ForeignKeyField(Company, backref='scraped_reviews')
 }
 
 Favorite = {
 	user = ForeignKeyField(User, backref='favorites')
-	company fk
+	company = ForeignKeyField(Company, backref='favorites')
 }
 ```
 ## Routes

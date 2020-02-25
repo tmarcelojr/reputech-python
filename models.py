@@ -28,6 +28,36 @@ class User(UserMixin, Model):
 	class Meta:
 		database = DATABASE
 
+# Company
+class Company(Model):
+	name = CharField()
+	website = CharField()
+
+	class Meta:
+		database = DATABASE
+
+# Source
+class Source(Model):
+	name = CharField()
+
+	class Meta:
+		database = DATABASE
+
+# Review
+class Review(Model):
+	creator = ForeignKeyField(User, backref='reviews')
+	stars = IntegerField()
+	title = CharField()
+	content = CharField()
+	company = ForeignKeyField(Company, backref='reviews')
+
+	class Meta:
+		database = DATABASE
+
+# Favorite
+class Favorite(Model):
+	user = ForeignKeyField(User, backref='favorites')
+
 
 # ==============================
 # 					CONNECTION

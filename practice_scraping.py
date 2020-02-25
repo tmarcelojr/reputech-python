@@ -8,11 +8,12 @@ headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleW
 page_html = req.get('https://www.glassdoor.com/Overview/Working-at-Braintree-EI_IE424728.11,20.htm', headers=headers)
 
 # This gives us a class of request
-print(type(page_html))
+print(page_html)
 
 # This will change our request into a BeautifulSoup so we can scrape
 soup = soup(page_html.text, 'html.parser')
 
+print(soup)
 # Grab the Company Name 
 print(soup.find('span', id='DivisionsDropdownComponent').getText()) # Returns Braintree
 
