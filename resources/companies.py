@@ -2,6 +2,8 @@ from models import Company
 from flask import Blueprint, request, jsonify
 from playhouse.shortcuts import model_to_dict
 
+# This should only be accessible to admin user.
+
 # ==============================
 # 					BLUEPRINT
 # ==============================
