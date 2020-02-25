@@ -17,7 +17,7 @@ DATABASE = SqliteDatabase('reviews.sqlite')
 DATABASE = SqliteDatabase('companies.sqlite')
 DATABASE = SqliteDatabase('sources.sqlite')
 DATABASE = SqliteDatabase('favorites.sqlite')
-# DATABASE = SqliteDatabase('collected_reviews.sqlite')
+DATABASE = SqliteDatabase('collected_reviews.sqlite')
 
 # ==============================
 # 						MODELS
@@ -67,7 +67,7 @@ class Favorite(Model):
 	class Meta:
 		database = DATABASE
 
-# Scraped reviews
+# Collected reviews
 class Collected_Review(Model):
 	number_of_salary_ratings= IntegerField()
 	number_of_benefits_ratings = IntegerField() 

@@ -5,15 +5,14 @@ from bs4 import BeautifulSoup as soup
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
 
 #
-page_html = req.get('https://www.glassdoor.com/Overview/Working-at-Braintree-EI_IE424728.11,20.htm', headers=headers)
+braintree_page_html = req.get('https://www.glassdoor.com/Overview/Working-at-Braintree-EI_IE424728.11,20.htm', headers=headers)
 
 # This gives us a class of request
-print(page_html)
+# print(braintree_page_html)
 
 # This will change our request into a BeautifulSoup so we can scrape
-soup = soup(page_html.text, 'html.parser')
+soup = soup(braintree_page_html.text, 'html.parser')
 
-print(soup)
 # Grab the Company Name 
 print(soup.find('span', id='DivisionsDropdownComponent').getText()) # Returns Braintree
 
@@ -38,6 +37,8 @@ print(reviews_results[4].getText())
 # Number of Benefits Reviews
 print('\nThis is the number of benefits reviews.')
 print(reviews_results[5].getText())
+
+
 
 
 
