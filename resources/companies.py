@@ -1,4 +1,4 @@
-from models import Review, DoesNotExist
+from models import Company
 from flask import Blueprint, request, jsonify
 from playhouse.shortcuts import model_to_dict
 
@@ -6,18 +6,18 @@ from playhouse.shortcuts import model_to_dict
 # 					BLUEPRINT
 # ==============================
 
-reviews = Blueprint('reviews', 'reviews')
+companies = Blueprint('companies', 'companies')
 
 # ==============================
 # 						ROUTES
 # ==============================
 
 # Index
-@reviews.route('/', methods=['GET'])
+@companies.route('/', methods=['GET'])
 def reviews_index():
-	reviews_dicts = [model_to_dict(review) for review in Review]
+	companies_dicts = [model_to_dict(company) for company in Company]
 	return jsonify(
-			data=reviews_dicts,
-			message=f'Successfully retrieved {len(reviews_dicts)} reviews',
+			data=companies_dicts,
+			message=f'Successfully retrieved {len(companies_dicts)} companies',
 			status=200
 		), 200

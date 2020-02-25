@@ -2,6 +2,7 @@ from flask import Flask, g
 from flask_login import LoginManager
 from models import User, DoesNotExist, initialize, DATABASE
 from resources.users import users
+from resources.companies import companies
 from resources.reviews import reviews
 DEBUG = True
 PORT = 8000
@@ -35,7 +36,7 @@ def unauthorized():
 
 app.register_blueprint(users, url_prefix='/api/v1/users')
 app.register_blueprint(reviews, url_prefix='/api/v1/reviews')
-# app.register_blueprint(companies, url_prefix='/api/v1/companies')
+app.register_blueprint(companies, url_prefix='/api/v1/companies')
 # app.register_blueprint(favorites, url_prefix='/api/v1/favorites')
 # app.register_blueprint(collected_reviews, url_prefix='/api/v1/collected_reviews')
 

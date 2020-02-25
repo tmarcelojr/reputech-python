@@ -14,7 +14,7 @@ from playhouse.db_url import connect
 
 DATABASE = SqliteDatabase('users.sqlite')
 DATABASE = SqliteDatabase('reviews.sqlite')
-# DATABASE = SqliteDatabase('companies.sqlite')
+DATABASE = SqliteDatabase('companies.sqlite')
 # DATABASE = SqliteDatabase('sources.sqlite')
 # DATABASE = SqliteDatabase('favorites.sqlite')
 # DATABASE = SqliteDatabase('collected_reviews.sqlite')
