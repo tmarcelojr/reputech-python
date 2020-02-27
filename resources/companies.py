@@ -5,6 +5,12 @@ from playhouse.shortcuts import model_to_dict
 # This should only be accessible to admin user.
 
 # ==============================
+# 		 IMPORT DATA COLLECTED
+# ==============================
+
+from resources.companies_list import companies_list
+
+# ==============================
 # 					BLUEPRINT
 # ==============================
 
@@ -39,3 +45,28 @@ def add_company():
 		message=f"Successfully added company {payload['name']}.",
 		status=201
 	), 201
+
+
+
+# Seed companies list data
+@companies.route('/seed_data', methods=['POST'])
+def add_companies():
+	payload = request.get_json()
+	for idx, company in enumerate(companies_list):
+		company = Company.create(
+			name=companies_list[idx]['name'],
+			website=companies_list[idx]['website'],
+		)
+		company_dict = model_to_dict(company)
+	return jsonify(
+		data=company_dict,
+		message='Successfully added companies.',
+		status=201
+	), 201
+
+
+
+
+
+
+

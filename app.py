@@ -7,6 +7,7 @@ from resources.reviews import reviews
 from resources.sources import sources
 from resources.favorites import favorites
 from resources.collected_reviews import collected_reviews
+
 DEBUG = True
 PORT = 8000
 app = Flask(__name__)

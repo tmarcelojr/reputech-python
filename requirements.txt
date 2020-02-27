@@ -1,3 +1,7 @@
+aiohttp==3.6.2
+async-timeout==3.0.1
+asyncio==3.4.3
+attrs==19.3.0
 bcrypt==3.1.7
 beautifulsoup4==4.8.2
 bs4==0.0.1
@@ -13,6 +17,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.1
 lxml==4.5.0
 MarkupSafe==1.1.1
+multidict==4.7.5
 peewee==3.13.1
 pycparser==2.19
 requests==2.23.0
@@ -20,3 +25,4 @@ six==1.14.0
 soupsieve==1.9.5
 urllib3==1.25.8
 Werkzeug==1.0.0
+yarl==1.4.2
