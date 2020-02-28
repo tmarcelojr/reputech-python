@@ -1,7 +1,7 @@
 from models import User, DoesNotExist
 from flask import Blueprint, request, jsonify
 from flask_bcrypt import generate_password_hash, check_password_hash
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 from playhouse.shortcuts import model_to_dict
 
 # ==============================
@@ -102,6 +102,7 @@ def get_logged_in_user():
 
 # Logout
 @users.route('/logout', methods=['GET'])
+@login_required
 def logout():
   logout_user()
   return jsonify(
@@ -111,7 +112,17 @@ def logout():
   ), 200
 
 # Delete
-# Save this for later when we have reviews behind added. So we can do cascading deletion.
+@users.route('/<id>', methods=['Delete'])
+@login_required
+def delete_user(id):
+	user_to_delete = User.get_by_id(id)
+	user_to_delete.delete_instance()
+	return jsonify(
+		data={}, 
+    message='Successfully deleted User.',
+    status=200
+  ), 200
+
 
 
 

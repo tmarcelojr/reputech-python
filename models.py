@@ -11,7 +11,7 @@ from playhouse.db_url import connect
 # 				CREATE DATABASE
 # ==============================
 
-DATABASE = SqliteDatabase('reputech.sqlite')
+DATABASE = SqliteDatabase('reputech.sqlite', pragmas={'foreign_keys': 1})
 
 # ==============================
 # 						MODELS
@@ -40,7 +40,7 @@ class Source(BaseModel):
 
 # Review
 class Review(BaseModel):
-	creator = ForeignKeyField(User, backref='reviews')
+	creator = ForeignKeyField(User, backref='reviews', on_delete='CASCADE')
 	stars = IntegerField()
 	title = CharField()
 	content = CharField()
@@ -48,7 +48,7 @@ class Review(BaseModel):
 
 # Favorite
 class Favorite(BaseModel):
-	user = ForeignKeyField(User, backref='favorites')
+	user = ForeignKeyField(User, backref='favorites', on_delete='CASCADE')
 	company = ForeignKeyField(Company, backref='favorites')
 
 

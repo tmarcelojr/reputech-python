@@ -1,0 +1,22 @@
+indeed_company_links = [
+	'https://www.indeed.com/cmp/Braintree',
+	'https://www.indeed.com/cmp/Spothero',
+	'https://www.indeed.com/cmp/Bswift',
+	'https://www.indeed.com/cmp/Ccc-Information-Services-Inc.',
+	'https://www.indeed.com/cmp/Echo-Global-Logistics',
+	'https://www.indeed.com/cmp/Enova-Financial-Services',
+	'https://www.indeed.com/cmp/Grubhub',
+	'https://www.indeed.com/cmp/Guaranteed-Rate',
+	'https://www.indeed.com/cmp/Morningstar',
+	'https://www.indeed.com/cmp/Motorola-Solutions',
+	'https://www.indeed.com/cmp/Rally-Health',
+	'https://www.indeed.com/cmp/Sms-Assist',
+	'https://www.indeed.com/cmp/Transunion',
+	'https://www.indeed.com/cmp/West-Monroe-Partners',
+	'https://www.indeed.com/cmp/Trunk-Club',
+	'https://www.indeed.com/cmp/Sprout-Social',
+	'https://www.indeed.com/cmp/@properties',
+	'https://www.indeed.com/cmp/Brandmuscle',
+	'https://www.indeed.com/cmp/Cars.com',
+	'https://www.indeed.com/cmp/Capital-One'
+]

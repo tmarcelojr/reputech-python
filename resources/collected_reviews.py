@@ -7,6 +7,7 @@ from playhouse.shortcuts import model_to_dict;
 # ==============================
 
 from sources.glassdoor import *
+# from sources.indeed import *
 from sources.sources_list import sources_list
 
 # ==============================
@@ -32,7 +33,7 @@ def collected_reviews_index():
 # Add data to table
 @collected_reviews.route('/seed_data', methods=['POST'])
 def seed_data():
-	for company_idx, company in enumerate(glassdoor_company_links):
+	for company_idx, company in enumerate(glassdoor_company_links): #
 		print(company_idx, company)
 		payload = request.get_json()
 		# int() since params is str obj # -1 due to list indexes.
@@ -49,6 +50,6 @@ def seed_data():
 		collected_review_dict = model_to_dict(collected_review)
 	return jsonify(
 		data=collected_review_dict,
-		message=f"Successfully added ratings about company id: source id: ",
+		message=f"Successfully seeded data.",
 		status=201
 	), 201

@@ -38,6 +38,6 @@ def add_favorite(company_id):
 	favorite_dict = model_to_dict(favorite)
 	return jsonify(
 		data=favorite_dict,
-		message=f"Successfully added {payload['company']} to favorite list.",
+		message=f"Successfully added {company_id} to favorite list.",
 		status=201
 	), 201

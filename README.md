@@ -10,8 +10,11 @@ API will be created using python. Scraping will be completed with beautiful soup
 02/25/2020 | User auth completed. Researched scraping, explored website structures, and scraped some data needed. | None | **3 day sprint**: Review model CRUD, favorites model routes, scrape more data from multiple sources and store in database |
 02/26/2020 | User reviews CRUD, favorites CRD, Companies CRD, Sources CRD | None | Scrape more data, create a seeder route, store in database.  Collected data CRUD. Create admin user to CRUD companies and sources. |
 02/27/2020 | Researched on multiple scraping tools. Beautiful Soup will remain the chosen tool. Scraper function is grabbing data needed. | None | Create a modular route and store data the most effective way. Test APIs for any bugs before moving starting front-end. |
-02/28/2020 | | | |
+02/28/2020 | Data scraped properly and stored as integers in DB. | None | **3 day sprint**: (Friday- Sunday) Cascading delete. Admin user. Add more companies and one more source. Create folder structure for React. Complete React basic layout, navbar, and render all components. Complete Auth. |
 
+## Scraping Data
+* Tech companies are chosen based on number of employees. Number is usually above 400.
+* Admin user can add companies in client side and seed data.
 
 
 ## Models

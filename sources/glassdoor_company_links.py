@@ -1,0 +1,22 @@
+glassdoor_company_links = [
+	'https://www.glassdoor.com/Overview/Working-at-Braintree-EI_IE424728.11,20.htm',
+	'https://www.glassdoor.com/Overview/Working-at-SpotHero-EI_IE935919.11,19.htm',
+	'https://www.glassdoor.com/Overview/Working-at-bswift-EI_IE346847.11,17.htm',
+	'https://www.glassdoor.com/Overview/Working-at-CCC-Information-Services-EI_IE4574.11,35.htm',
+	'https://www.glassdoor.com/Overview/Working-at-Echo-Global-Logistics-EI_IE100320.11,32.htm',
+	'https://www.glassdoor.com/Overview/Working-at-Enova-EI_IE298072.11,16.htm',
+	'https://www.glassdoor.com/Overview/Working-at-Grubhub-EI_IE419089.11,18.htm',
+	'https://www.glassdoor.com/Overview/Working-at-Guaranteed-Rate-EI_IE318640.11,26.htm',
+	'https://www.glassdoor.com/Overview/Working-at-Morningstar-EI_IE3299.11,22.htm',
+	'https://www.glassdoor.com/Overview/Working-at-Motorola-Solutions-EI_IE427189.11,29.htm',
+	'https://www.glassdoor.com/Overview/Working-at-Rally-Health-EI_IE881152.11,23.htm',
+	'https://www.glassdoor.com/Overview/Working-at-SMS-Assist-EI_IE622820.11,21.htm',
+	'https://www.glassdoor.com/Overview/Working-at-TransUnion-EI_IE11441.11,21.htm',
+	'https://www.glassdoor.com/Overview/Working-at-West-Monroe-Partners-EI_IE118343.11,31.htm',
+	'https://www.glassdoor.com/Overview/Working-at-Trunk-Club-EI_IE675938.11,21.htm',
+	'https://www.glassdoor.com/Overview/Working-at-Sprout-Social-EI_IE701678.11,24.htm',
+	'https://www.glassdoor.com/Overview/Working-at--properties-EI_IE349652.11,22.htm',
+	'https://www.glassdoor.com/Overview/Working-at-Brandmuscle-EI_IE265032.11,22.htm',
+	'https://www.glassdoor.com/Overview/Working-at-Cars-com-EI_IE34989.11,19.htm',
+	'https://www.glassdoor.com/Overview/Working-at-Capital-One-EI_IE3736.11,22.htm'
+]
