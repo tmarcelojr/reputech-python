@@ -88,15 +88,16 @@ def login():
 def update_user(id):
   payload = request.get_json()
   user = User.get_by_id(id)
-  if current_user.id == user:
+  if current_user.id == user.id:
     user.username = payload['username'] if 'username' in payload else None
-    user.password = payload['password'] if 'password' in payload else None
+    user.password = generate_password_hash(payload['password']) if 'password' in payload else None
     user.email = payload['email'] if 'email' in payload else None
     user.about_me = payload['about_me'] if 'about_me' in payload else None
     user.save()
     user_dict = model_to_dict(user)
+    user_dict.pop('password')
     return jsonify(
-      data=model_to_dict(user),
+      data=user_dict,
       message=f"Successfully updated user with id {user.id}",
       status=200
     ), 200
