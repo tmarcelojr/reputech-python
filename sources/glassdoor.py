@@ -39,21 +39,6 @@ async def main():
 	for link in glassdoor_company_links:
 		websites_data.append(await asyncio.create_task(get_responses(link)))
 
-company_ratings = []
-benefits_ratings = []
-salary_ratings = []
-interview_ratings = []
-
-# def get_text():
-# 	for data in websites_data:
-# 		test = soup(data.text, 'html.parser')
-# 		reviews = test.find_all("span", class_="num h2")
-# 		for idx, review in enumerate(reviews):
-# 			if idx == 1: company_ratings.append(int(review.getText().replace(',', '')))
-# 			elif idx == 3: salary_ratings.append(int(review.getText().replace(',', '')))
-# 			elif idx == 4: interview_ratings.append(int(review.getText().replace(',', '')))
-# 			elif idx == 5: benefits_ratings.append(int(review.getText().replace(',', '')))
-
 def replaceMultiple(mainString, toBeReplaces, newString):
     # Iterate over the strings to be replaced
     for elem in toBeReplaces :
@@ -64,27 +49,38 @@ def replaceMultiple(mainString, toBeReplaces, newString):
     
     return  mainString
 
+company_ratings = []
+benefits_ratings = []
+salary_ratings = []
+interview_ratings = []
+
+
 def get_text():
 	for data in websites_data:
-		test = soup(data.text, 'html.parser')
-		reviews = test.find_all("span", class_="num h2")
+		soup_data = soup(data.text, 'html.parser')
+		reviews = soup_data.find_all("span", class_="num h2")
 		for idx, review in enumerate(reviews):
-			num_ratings = replaceMultiple(review.getText(), ['.', 'k'], '')
-			if idx == 1: company_ratings.append(int(num_ratings))
-			elif idx == 3: salary_ratings.append(int(num_ratings))
-			elif idx == 4: interview_ratings.append(int(num_ratings))
-			elif idx == 5: benefits_ratings.append(int(num_ratings))
+			review_data = review.getText()
+			if idx != 0 and idx != 2 and review_data != '--':
+				converted = int(num_data)
+				if 'k' in review_data:
+					# float takes in int and strings and returns floating int
+					# float removes white spaces and '.', i.e., '7.7k'
+					# int the floating int for better ui in client
+					num_data = float(review_data.replace('k', '')) * 1000
+					if idx == 1: company_ratings.append(num_data)
+					elif idx == 3: salary_ratings.append(num_data)
+					elif idx == 4: interview_ratings.append(num_data)
+					elif idx == 5: benefits_ratings.append(num_data)
+				else:
+					num_data = float(review_data)
+					if idx == 1: company_ratings.append(num_data)
+					elif idx == 3: salary_ratings.append(num_data)
+					elif idx == 4: interview_ratings.append(num_data)
+					elif idx == 5: benefits_ratings.append(num_data)
 
 asyncio.run(main())
 get_text()
-print('\n Company ratings')
-print(company_ratings)
-print('\n Salary ratings')
-print(salary_ratings)
-print('\n Interviews ratings')
-print(interview_ratings)
-print('\n Benefits ratings')
-print(benefits_ratings)
 
 
 

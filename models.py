@@ -56,8 +56,8 @@ class Favorite(BaseModel):
 class Collected_Review(BaseModel):
 	number_of_company_ratings = IntegerField()
 	number_of_salary_ratings= IntegerField()
-	number_of_benefits_ratings = IntegerField() 
 	number_of_interview_ratings = IntegerField()
+	number_of_benefits_ratings = IntegerField() 
 	source =  ForeignKeyField(Source, backref='collected_reviews')
 	company = ForeignKeyField(Company, backref='collected_reviews')
 

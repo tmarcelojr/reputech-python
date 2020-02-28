@@ -8,7 +8,7 @@ from playhouse.shortcuts import model_to_dict
 # 		 IMPORT DATA COLLECTED
 # ==============================
 
-from resources.companies_list import companies_list
+from sources.companies_list import companies_list
 
 # ==============================
 # 					BLUEPRINT
@@ -45,8 +45,6 @@ def add_company():
 		message=f"Successfully added company {payload['name']}.",
 		status=201
 	), 201
-
-
 
 # Seed companies list data
 @companies.route('/seed_data', methods=['POST'])
