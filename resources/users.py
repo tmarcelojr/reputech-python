@@ -82,23 +82,31 @@ def login():
         status=401
       ), 401
 
-# Check current user
-@users.route('/logged_in', methods=['GET'])
-def get_logged_in_user():
-  if not current_user.is_authenticated:
+# Update user
+@users.route('/<id>', methods=['PUT'])
+@login_required
+def update_user(id):
+  payload = request.get_json()
+  user = User.get_by_id(id)
+  if current_user.id == user:
+    user.username = payload['username'] if 'username' in payload else None
+    user.password = payload['password'] if 'password' in payload else None
+    user.email = payload['email'] if 'email' in payload else None
+    user.about_me = payload['about_me'] if 'about_me' in payload else None
+    user.save()
+    user_dict = model_to_dict(user)
     return jsonify(
-      data={},
-      message='No user is currently logged in',
-      status=401
-    ), 401
-  else:
-    user_dict = model_to_dict(current_user)
-    user_dict.pop('password')
-    return jsonify(
-      data=user_dict,
-      message=f"Current user is {user_dict['username']}", 
+      data=model_to_dict(user),
+      message=f"Successfully updated user with id {user.id}",
       status=200
     ), 200
+  else:
+    return jsonify(
+      data="Error: Forbidden",
+      message=f"User can only update their own profiles. Owner id doesn't match current user id.",
+      status=403
+    ), 403
+
 
 # Logout
 @users.route('/logout', methods=['GET'])
@@ -123,6 +131,23 @@ def delete_user(id):
     status=200
   ), 200
 
+# Check current user
+@users.route('/logged_in', methods=['GET'])
+def get_logged_in_user():
+  if not current_user.is_authenticated:
+    return jsonify(
+      data={},
+      message='No user is currently logged in',
+      status=401
+    ), 401
+  else:
+    user_dict = model_to_dict(current_user)
+    user_dict.pop('password')
+    return jsonify(
+      data=user_dict,
+      message=f"Current user is {user_dict['username']}", 
+      status=200
+    ), 200
 
 
 
