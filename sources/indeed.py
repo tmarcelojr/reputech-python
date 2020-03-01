@@ -53,11 +53,6 @@ def get_text():
 				elif idx == 4: benefits_ratings.append(num_data)
 				elif idx == 7: interview_ratings.append(num_data)
 
-	print(company_ratings)
-	print(salary_ratings)
-	print(benefits_ratings)
-	print(interview_ratings)
-
 # Only call when needed.
 asyncio.run(main())
 get_text()

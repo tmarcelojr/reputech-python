@@ -1,5 +1,6 @@
 from flask import Flask, g, jsonify
 from flask_login import LoginManager
+from flask_cors import CORS
 from models import User, DoesNotExist, initialize, DATABASE
 from resources.users import users
 from resources.companies import companies
@@ -11,6 +12,13 @@ from resources.collected_reviews import collected_reviews
 DEBUG = True
 PORT = 8000
 app = Flask(__name__)
+# CORS(app)
+
+# ==============================
+#             CORS
+# ==============================
+
+CORS(users, origins=['http://localhost:3000'], supports_credentials=True)
 
 # ==============================
 # 				LOGIN MANAGER
