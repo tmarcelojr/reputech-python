@@ -8,7 +8,12 @@ from playhouse.shortcuts import model_to_dict
 # 		 IMPORT DATA COLLECTED
 # ==============================
 
-from sources.companies_list import companies_list
+# from sources.companies_list import companies_list
+from sources.scrape_companies import *
+
+# print('company names', company_names)
+# print('company website', company_websites)
+# print('company wesbite logos', company_website_logos)
 
 # ==============================
 # 					BLUEPRINT
@@ -34,26 +39,37 @@ def reviews_index():
 @companies.route('/', methods=['POST'])
 def add_company():
 	payload = request.get_json()
+	print(payload)
 	company = Company.create(
 		name=payload['name'],
-		website=payload['website']
+		website=payload['website'],
+		website_logo=payload['website_logo']
 	)
 
 	company_dict = model_to_dict(company)
 	return jsonify(
 		data=company_dict,
-		message=f"Successfully added company {payload['name']}.",
+		message=f'Successfully added company.',
 		status=201
 	), 201
+
+# Show company
+@companies.route('/<id>', methods=['GET'])
+def show_company():
+	return jsonify(
+		data={},
+		message='Succesfully displaying company show page.',
+		status=200
+	), 200
 
 # Seed companies list data
 @companies.route('/seed_data', methods=['POST'])
 def add_companies():
-	payload = request.get_json()
-	for idx, company in enumerate(companies_list):
+	for idx, company in enumerate(company_names):
 		company = Company.create(
-			name=companies_list[idx]['name'],
-			website=companies_list[idx]['website'],
+			name=company_names[idx],
+			website=company_websites[idx],
+			website_logo=company_website_logos[idx]
 		)
 		company_dict = model_to_dict(company)
 	return jsonify(
@@ -61,9 +77,6 @@ def add_companies():
 		message='Successfully added companies.',
 		status=201
 	), 201
-
-
-
 
 
 

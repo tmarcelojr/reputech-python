@@ -1,0 +1,22 @@
+indeed_benefits_links = [
+	'https://www.indeed.com/cmp/Braintree/benefits',
+	'https://www.indeed.com/cmp/Spothero/benefits',
+	'https://www.indeed.com/cmp/Bswift/benefits',
+	'https://www.indeed.com/cmp/Ccc-Information-Services-Inc./benefits',
+	'https://www.indeed.com/cmp/Echo-Global-Logistics/benefits',
+	'https://www.indeed.com/cmp/Enova-Financial-Services/benefits',
+	'https://www.indeed.com/cmp/Grubhub/benefits',
+	'https://www.indeed.com/cmp/Guaranteed-Rate/benefits',
+	'https://www.indeed.com/cmp/Morningstar/benefits',
+	'https://www.indeed.com/cmp/Motorola-Solutions/benefits',
+	'https://www.indeed.com/cmp/Rally-Health/benefits',
+	'https://www.indeed.com/cmp/Sms-Assist/benefits',
+	'https://www.indeed.com/cmp/Transunion/benefits',
+	'https://www.indeed.com/cmp/West-Monroe-Partners/benefits',
+	'https://www.indeed.com/cmp/Trunk-Club/benefits',
+	'https://www.indeed.com/cmp/Sprout-Social/benefits',
+	'https://www.indeed.com/cmp/@properties/benefits',
+	'https://www.indeed.com/cmp/Brandmuscle/benefits',
+	'https://www.indeed.com/cmp/Cars.com/benefits',
+	'https://www.indeed.com/cmp/Capital-One/benefits'
+]

@@ -12,13 +12,7 @@ from resources.collected_reviews import collected_reviews
 DEBUG = True
 PORT = 8000
 app = Flask(__name__)
-# CORS(app)
-
-# ==============================
-#             CORS
-# ==============================
-
-CORS(users, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(app, supports_credentials=True)
 
 # ==============================
 # 				LOGIN MANAGER

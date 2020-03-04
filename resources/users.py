@@ -38,7 +38,7 @@ def register():
 				username=payload['username'],
 				password=generate_password_hash(payload['password']),
 				email=payload['email'],
-				about_me=payload['about_me']
+				about_me=payload['aboutMe']
 			)
 		login_user(created_user)
 		user_dict = model_to_dict(created_user)

@@ -18,17 +18,21 @@ async def main():
 	for link in indeed_company_links:
 		websites_data.append(await asyncio.create_task(get_responses(link)))
 
-company_ratings = []
-benefits_ratings = []
-salary_ratings = []
-interview_ratings = []
+indeed_company_ratings = []
+indeed_benefits_ratings = []
+indeed_salary_ratings = []
+indeed_interview_ratings = []
+indeed_rating = []
 
 def get_text():
 	for data in websites_data:
 		soup_data = soup(data.text, 'html.parser')
 		reviews = soup_data.find_all('a', class_='cmp-CompactHeaderMenuItem-link cmp-u-noUnderline')
+		rating = soup_data.find(class_='cmp-CompactHeaderCompanyRatings-value').getText()
+		indeed_rating.append(rating)
 		for idx, review in enumerate(reviews):
 			review_data = review.find('div', class_='cmp-CompactHeaderMenuItem-count')
+			# print('this is my review data', review_data)
 			if review_data != None:
 				review_data_text = review_data.getText()
 				if idx != 0 and idx != 1 and idx != 5 and idx != 6:
@@ -37,25 +41,25 @@ def get_text():
 						# float removes white spaces and '.', i.e., '7.7k'
 						# int the floating int for better ui in client
 						num_data = float(review_data_text.replace('K', '')) * 1000
-						if idx == 2: company_ratings.append(int(num_data))
-						elif idx == 3: salary_ratings.append(int(num_data))
-						elif idx == 4: benefits_ratings.append(int(num_data))
-						elif idx == 7: interview_ratings.append(int(num_data))
+						if idx == 2: indeed_company_ratings.append(int(num_data))
+						elif idx == 3: indeed_salary_ratings.append(int(num_data))
+						elif idx == 4: indeed_benefits_ratings.append(int(num_data))
+						elif idx == 7: indeed_interview_ratings.append(int(num_data))
 					else:
-						if idx == 2: company_ratings.append(int(review_data_text))
-						elif idx == 3: salary_ratings.append(int(review_data_text))
-						elif idx == 4: benefits_ratings.append(int(review_data_text))
-						elif idx == 7: interview_ratings.append(int(review_data_text))
+						if idx == 2: indeed_company_ratings.append(int(review_data_text))
+						elif idx == 3: indeed_salary_ratings.append(int(review_data_text))
+						elif idx == 4: indeed_benefits_ratings.append(int(review_data_text))
+						elif idx == 7: indeed_interview_ratings.append(int(review_data_text))
 			else:
 				num_data = 0
-				if idx == 2: company_ratings.append(num_data)
-				elif idx == 3: salary_ratings.append(num_data)
-				elif idx == 4: benefits_ratings.append(num_data)
-				elif idx == 7: interview_ratings.append(num_data)
+				if idx == 2: indeed_company_ratings.append(num_data)
+				elif idx == 3: indeed_salary_ratings.append(num_data)
+				elif idx == 4: indeed_benefits_ratings.append(num_data)
+				elif idx == 7: indeed_interview_ratings.append(num_data)
 
 # Only call when needed.
-asyncio.run(main())
-get_text()
+# asyncio.run(main())
+# get_text()
 
 
 

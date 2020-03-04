@@ -93,3 +93,8 @@ DELETE | /api/v1/reviews/company_id/review_id | delete review |
 * Users can like companies
 * Users can view most liked companies
 * Number of job postings
+
+## Installation
+1. Create Sources for each website source using create source route
+2. Run Companies seed data route
+3. Run Collected Reviews seed data route 
