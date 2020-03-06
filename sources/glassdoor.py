@@ -22,6 +22,8 @@ glassdoor_company_ratings = []
 glassdoor_benefits_ratings = []
 glassdoor_salary_ratings = []
 glassdoor_interview_ratings = []
+
+#average company rating
 glassdoor_rating = []
 
 def get_text():
