@@ -11,10 +11,6 @@ from playhouse.shortcuts import model_to_dict
 # from sources.companies_list import companies_list
 from sources.scrape_companies import *
 
-# print('company names', company_names)
-# print('company website', company_websites)
-# print('company wesbite logos', company_website_logos)
-
 # ==============================
 # 					BLUEPRINT
 # ==============================

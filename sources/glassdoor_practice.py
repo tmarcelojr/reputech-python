@@ -1,25 +1,3 @@
-# import sqlite3
-# from statistics import mean
-
-# # Connectiont to our database
-# conn = sqlite3.connect('reputech.sqlite')
-
-# c = conn.cursor()
-
-# average_company_ratings = []
-# average_salary_ratings = []
-# average_benefits_ratings = []
-# average_interview_ratings = []\
-
-# m = c.execute("SELECT * FROM collected_review WHERE company_id = 1")
-# for x in m:
-# 	print(x)
-# 	average_company_ratings.append(x[1])
-
-# print('this is our list of company ratings', average_company_ratings)
-
-
-
 import requests as req
 import asyncio
 from bs4 import BeautifulSoup as soup

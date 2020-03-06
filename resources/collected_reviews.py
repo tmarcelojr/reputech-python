@@ -4,19 +4,6 @@ from playhouse.shortcuts import model_to_dict;
 import simplejson as json
 import math
 import sqlite3
-# con = sqlite3.connect('reputech.sqlite')
-# c = con.cursor()
-
-# ratings = c.execute('SELECT company_id, avg(company_rating) FROM collected_review GROUP BY company_id;')
-
-# average_ratings = []
-# for row in ratings:
-# 	average_ratings.append(row)
-
-# # print(average_ratings)
-
-
-
 
 # ==============================
 # 		 IMPORT DATA COLLECTED
@@ -103,8 +90,6 @@ def seed_data():
 			)
 			collected_review_dict = model_to_dict(collected_review)
 			collected_reviews_data.append(collected_review_dict)
-			# print('!!!!!!!!!!!!!!!!!!!!!!!!!')
-			# print(collected_reviews_data)
 	return jsonify(
 		data=collected_reviews_data,
 		message=f"Successfully seeded data.",
