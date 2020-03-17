@@ -1,7 +1,7 @@
 import os
 from flask import Flask, g, jsonify
 from flask_login import LoginManager
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from models import User, DoesNotExist, initialize, DATABASE
 from resources.users import users
 from resources.companies import companies
