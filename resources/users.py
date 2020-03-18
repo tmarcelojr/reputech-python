@@ -1,6 +1,5 @@
 from models import User, DoesNotExist
 from flask import Blueprint, request, jsonify
-from flask_cors import cross_origin
 from flask_bcrypt import generate_password_hash, check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
 from playhouse.shortcuts import model_to_dict
@@ -22,7 +21,6 @@ def test_user_resource():
 
 # Register User
 @users.route('/register', methods=['POST'])
-@cross_origin(origin='*',headers=['Access-Control-Allow-Origin','Content-Type'])
 def register():
 	payload = request.get_json()
 	payload['username'] = payload['username'].lower()
@@ -54,7 +52,6 @@ def register():
 
 # Login
 @users.route('/login', methods=['POST'])
-@cross_origin(origin='*',headers=['Access-Control-Allow-Origin','Content-Type'])
 def login():
 	payload = request.get_json()
 	payload['username'] = payload['username'].lower()
