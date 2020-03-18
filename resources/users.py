@@ -21,6 +21,7 @@ def test_user_resource():
 
 # Register User
 @users.route('/register', methods=['POST'])
+@cross_origin(origin='*',headers=['Access-Control-Allow-Origin','Content-Type'])
 def register():
 	payload = request.get_json()
 	payload['username'] = payload['username'].lower()
@@ -52,6 +53,7 @@ def register():
 
 # Login
 @users.route('/login', methods=['POST'])
+@cross_origin(origin='*',headers=['Access-Control-Allow-Origin','Content-Type'])
 def login():
 	payload = request.get_json()
 	payload['username'] = payload['username'].lower()
