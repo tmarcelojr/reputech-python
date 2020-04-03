@@ -40,6 +40,7 @@ def unauthorized():
 def after_request(response):
     header = response.headers
     header['Access-Control-Allow-Origin'] = 'https://reputech-chicago.herokuapp.com'
+    header['Access-Control-Allow-Credentials'] = True 
     return response
 
 
