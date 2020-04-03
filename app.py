@@ -36,6 +36,12 @@ def unauthorized():
     status=401
   ), 401
 
+@app.after_request
+def after_request(response):
+    header = response.headers
+    header['Access-Control-Allow-Origin'] = '*'
+    return response
+
 
 CORS(collected_reviews, origins=['http://localhost:3000', 'https://reputech-chicago.herokuapp.com'], supports_credentials=True)
 CORS(companies, origins=['http://localhost:3000', 'https://reputech-chicago.herokuapp.com'], supports_credentials=True)
