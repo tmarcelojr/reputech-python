@@ -13,7 +13,6 @@ from resources.collected_reviews import collected_reviews
 DEBUG = True
 PORT = 8000
 app = Flask(__name__)
-app.config['CORS_HEADERS'] = 'Content-Type'
 CORS(app, origins=['https://reputech-chicago.herokuapp.com'], supports_credentials=True)
 
 # ==============================
@@ -63,7 +62,6 @@ def before_request():
 def after_request(response):
   header = response.headers
   header['Access-Control-Allow-Origin'] = 'https://reputech-chicago.herokuapp.com'
-  header['Access-Control-Allow-Credentials'] = 'true'
   g.db.close()
   return response
 
