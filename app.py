@@ -60,9 +60,6 @@ def before_request():
 
 @app.after_request
 def after_request(response):
-  header = response.headers
-  header['Access-Control-Allow-Origin'] = 'https://reputech-chicago.herokuapp.com'
-  header['Access-Control-Allow-Credentials'] = 'true'
   g.db.close()
   return response
 
