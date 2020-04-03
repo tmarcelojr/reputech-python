@@ -16,7 +16,6 @@ reviews = Blueprint('reviews', 'reviews')
 
 # Index
 @reviews.route('/', methods=['GET'])
-@cross_origin(allow_headers=['Content-Type'])
 def reviews_index():
 	reviews_dicts = [model_to_dict(review) for review in Review]
 	return jsonify(
