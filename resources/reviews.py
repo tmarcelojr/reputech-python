@@ -3,6 +3,7 @@ from flask import Blueprint, request, jsonify
 from flask_cors import cross_origin
 from flask_login import current_user, login_required
 from playhouse.shortcuts import model_to_dict
+from resources.crossdomain import crossdomain
 
 # ==============================
 # 					BLUEPRINT
@@ -15,7 +16,8 @@ reviews = Blueprint('reviews', 'reviews')
 # ==============================
 
 # Index
-@reviews.route('/', methods=['GET'])
+@reviews.route('/', methods=['GET', 'OPTIONS'])
+@crossdomain(origin='*')
 def reviews_index():
 	reviews_dicts = [model_to_dict(review) for review in Review]
 	return jsonify(

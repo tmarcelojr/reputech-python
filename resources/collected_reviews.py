@@ -2,6 +2,7 @@ from models import Collected_Review;
 from flask import Blueprint, request, jsonify;
 from flask_cors import cross_origin
 from playhouse.shortcuts import model_to_dict;
+from resources.crossdomain import crossdomain
 import simplejson as json
 import math
 import sqlite3
@@ -27,7 +28,8 @@ collected_reviews = Blueprint('collected_reviews', 'collected_reviews')
 # ==============================
 
 # List of collected reviews
-@collected_reviews.route('/', methods=['GET'])
+@collected_reviews.route('/', methods=['GET', 'OPTIONS'])
+@crossdomain(origin='*')
 def collected_reviews_index():
 	con = sqlite3.connect('reputech.sqlite')
 	c = con.cursor()
