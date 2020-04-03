@@ -28,7 +28,7 @@ collected_reviews = Blueprint('collected_reviews', 'collected_reviews')
 
 # List of collected reviews
 @collected_reviews.route('/', methods=['GET'])
-@cross_origin(origin='*', headers=['Access-Control-Allow-Origin','Content-Type'])
+@cross_origin(origin='https://reputech-chicago.herokuapp.com', headers=['Access-Control-Allow-Origin','Content-Type'])
 def collected_reviews_index():
 	con = sqlite3.connect('reputech.sqlite')
 	c = con.cursor()
