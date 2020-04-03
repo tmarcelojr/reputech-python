@@ -134,7 +134,7 @@ def delete_user(id):
 
 # Check current user
 @users.route('/logged_in', methods=['GET'])
-@cross_origin(origin='https://reputech-chicago.herokuapp.com', headers=['Access-Control-Allow-Origin','Content-Type'])
+@cross_origin(allow_headers=['Content-Type'])
 def get_logged_in_user():
   if not current_user.is_authenticated:
     return jsonify(

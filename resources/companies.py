@@ -24,7 +24,7 @@ companies = Blueprint('companies', 'companies')
 
 # Index
 @companies.route('/', methods=['GET'])
-@cross_origin(origin='https://reputech-chicago.herokuapp.com', headers=['Access-Control-Allow-Origin','Content-Type'])
+@cross_origin(allow_headers=['Content-Type'])
 def reviews_index():
 	companies_dicts = [model_to_dict(company) for company in Company]
 	return jsonify(
