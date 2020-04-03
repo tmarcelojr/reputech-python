@@ -14,6 +14,7 @@ DEBUG = True
 PORT = 8000
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app, origins=['http://localhost:3000', 'https://reputech-chicago.herokuapp.com'], allow_headers=["Content-Type", "Authorization", "Access-Control-Allow-Credentials"], supports_credentials=True)
 
 # ==============================
 # 				LOGIN MANAGER
@@ -36,12 +37,6 @@ def unauthorized():
     message="User must be logged in to access that resource",
     status=401
   ), 401
-
-
-CORS(collected_reviews, origins=['http://localhost:3000', 'https://reputech-chicago.herokuapp.com'], supports_credentials=True)
-CORS(companies, origins=['http://localhost:3000', 'https://reputech-chicago.herokuapp.com'], supports_credentials=True)
-CORS(reviews, origins=['http://localhost:3000', 'https://reputech-chicago.herokuapp.com'], supports_credentials=True)
-CORS(users, origins=['http://localhost:3000', 'https://reputech-chicago.herokuapp.com'], supports_credentials=True)
 
 # ==============================
 # 			REGISTER BLUEPRINTS
