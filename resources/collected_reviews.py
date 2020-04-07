@@ -11,8 +11,8 @@ import sqlite3
 # ==============================
 
 # Only import when seeding or will run everytime.
-# from sources.glassdoor import *
-# from sources.indeed import *
+from sources.glassdoor import *
+from sources.indeed import *
 
 from sources.sources_list import sources_list
 

@@ -46,7 +46,6 @@ class User(UserMixin, BaseModel):
 	username = CharField(unique=True)
 	password = CharField()
 	email = CharField()
-	about_me = TextField()
 
 # Company
 class Company(BaseModel):

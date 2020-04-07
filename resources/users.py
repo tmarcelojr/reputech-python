@@ -37,8 +37,7 @@ def register():
 		created_user = User.create(
 				username=payload['username'],
 				password=generate_password_hash(payload['password']),
-				email=payload['email'],
-				about_me=payload['aboutMe']
+				email=payload['email']
 			)
 		login_user(created_user)
 		user_dict = model_to_dict(created_user)
