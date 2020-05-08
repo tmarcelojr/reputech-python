@@ -11,6 +11,7 @@ API will be created using python. Scraping will be completed with beautiful soup
 02/26/2020 | User reviews CRUD, favorites CRD, Companies CRD, Sources CRD | None | Scrape more data, create a seeder route, store in database.  Collected data CRUD. Create admin user to CRUD companies and sources. |
 02/27/2020 | Researched on multiple scraping tools. Beautiful Soup will remain the chosen tool. Scraper function is grabbing data needed. | None | Create a modular route and store data the most effective way. Test APIs for any bugs before moving starting front-end. |
 02/28/2020 | Data scraped properly and stored as integers in DB. | None | **3 day sprint**: (Friday- Sunday) Cascading delete. Admin user. Add more companies and one more source. Create folder structure for React. Complete React basic layout, navbar, and render all components. Complete Auth. |
+05/06/2020 | Application fully functioning. Updated README. Added Date in Reviews model | None | None at this time
 
 ## Scraping Data
 * Tech companies are chosen based on number of employees. Number is usually above 400.
@@ -94,7 +95,26 @@ DELETE | /api/v1/reviews/company_id/review_id | delete review |
 * Users can view most liked companies
 * Number of job postings
 
-## Installation
-1. Create Sources for each website source using create source route
-2. Run Companies seed data route
-3. Run Collected Reviews seed data route 
+Tools used: Postman
+1. Make sure server is running in terminal - 'python app.py'
+2. Create sources for each website source using routes - POST request
+3. Run source GET request to ensure sources are created
+4. For each source go to sources/'company name'.py and go at the bottom of the code and uncomment function calls and
+ 	sources/scrape_companies.py
+5. Go to resources/companies.py and run the seed_data route for companies - POST request
+6. Run companies GET request to make companies are created
+7. Go to resources/collected_reviews and run seed_data - POST request
+
+Check database using SQLite3 in terminal
+8. Make sure you are in the parent folder of your application. Run ls and make sure reputech.sqlite is in the folder.
+9. Run sqlite3 reputech.sqlite
+10. Commands: (Make sure names are singular in commands. For example, sources -> source)
+	• SELECT * FROM company;
+	• SELECT * FROM collected_review;
+	• SELECT * FROM source;
+
+The application is functional now with auth and CRUD Reviews.
+11. Go back to step 4 and comment out the function calls. Leaving this open will scrape sources every time server restarts or runs. This will cause a long delay.
+
+Optional steps:
+12. Create users, and reviews using Postman

@@ -63,6 +63,7 @@ class Review(BaseModel):
 	stars = IntegerField()
 	title = CharField()
 	content = CharField()
+	created_on = DateField(default=datetime.date.today, formats=['%Y-%m-%d'])
 	company = ForeignKeyField(Company, backref='reviews')
 
 # Favorite
