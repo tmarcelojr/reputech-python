@@ -39,3 +39,22 @@ def add_favorite(company_id):
 		message=f"Successfully added {company_id} to favorite list.",
 		status=201
 	), 201
+
+# Delete Favorite
+@favorites.route('/<company_id>', methods=['Delete'])
+@login_required
+def delete_favorite(company_id):
+	favorite_to_delete = Favorite.get_by_id(company_id)
+	if current_user.id == Favorite.user.id:
+		favorite_to_delete.delete_instance()
+		return jsonify(
+			data={},
+			message=f'Successfylly removed from favorites list with id {favorite_to_delete.user.id}',
+			status= 200
+		), 200
+	else:
+		return jsonify(
+			data={'Error: Forbidden'},
+			message='Users can only removed their own favorite',
+			status=403
+		), 403

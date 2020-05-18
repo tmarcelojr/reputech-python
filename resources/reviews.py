@@ -62,7 +62,7 @@ def delete_review(id):
 	else:
 		return jsonify(
 				data={'Error: Forbidden'},
-				message='Penguins can only delete their own baby penguins.',
+				message='Users can only delete their own review',
 				status=403
 			), 403
 
