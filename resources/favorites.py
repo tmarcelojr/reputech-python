@@ -3,7 +3,6 @@ from flask import Blueprint, request, jsonify
 from flask_login import current_user, login_required
 from playhouse.shortcuts import model_to_dict
 
-
 # ==============================
 # 					BLUEPRINT
 # ==============================
@@ -29,7 +28,6 @@ def favorites_index():
 @favorites.route('/<company_id>', methods=['POST'])
 @login_required
 def add_favorite(company_id):
-	payload = request.get_json()
 	favorite = Favorite.create(
 		user=current_user.id,
 		company=company_id

@@ -15,16 +15,7 @@ if 'ON_HEROKU' in os.environ: # later we will manually add this env var
                                                      # when you provision the
                                                      # Heroku Postgres Add-on
 else:
-  DATABASE = SqliteDatabase('dogs.sqlite')
-
-  # OPTIONALLY: instead of the above line, here's how you could have your 
-  # local app use PSQL instead of SQLite:
-
-  # DATABASE = PostgresqlDatabase('dog_demo', user='reuben')  
-
-  # the first argument is the database name -- YOU MUST MANUALLY CREATE 
-  # IT IN YOUR psql TERMINAL
-  # the second argument is your Unix/Linux username on your computer
+  DATABASE = SqliteDatabase('reputech.sqlite')
 
 # ==============================
 # 				CREATE DATABASE
