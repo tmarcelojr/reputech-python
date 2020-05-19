@@ -49,7 +49,7 @@ def delete_favorite(company_id):
 		favorite_to_delete.delete_instance()
 		return jsonify(
 			data={},
-			message=f'Successfylly removed from favorites list with id {favorite_to_delete.user.id}',
+			message=f'Successfully removed from favorites list with id {favorite_to_delete.user.id}',
 			status= 200
 		), 200
 	else:
