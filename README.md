@@ -95,7 +95,7 @@ DELETE | /api/v1/reviews/company_id/review_id | delete review |
 * Users can view most liked companies
 * Number of job postings
 
-Tools used: Postman
+## Tools used: Postman
 1. Make sure server is running in terminal - 'python app.py'
 2. Create sources for each website source using routes - POST request
 3. Run source GET request to ensure sources are created
@@ -104,17 +104,13 @@ Tools used: Postman
 5. Go to resources/companies.py and run the seed_data route for companies - POST request
 6. Run companies GET request to make companies are created
 7. Go to resources/collected_reviews and run seed_data - POST request
-
-Check database using SQLite3 in terminal
-8. Make sure you are in the parent folder of your application. Run ls and make sure reputech.sqlite is in the folder.
+8. Check database using SQLite3 in terminal. Make sure you are in the parent folder of your application. Run ls and make sure reputech.sqlite is in the folder.
 9. Run sqlite3 reputech.sqlite
 10. Commands: (Make sure names are singular in commands. For example, sources -> source)
 	• SELECT * FROM company;
 	• SELECT * FROM collected_review;
 	• SELECT * FROM source;
+11. The application is functional now with auth and CRUD Reviews. Go back to step 4 and comment out the function calls. Leaving this open will scrape sources every time server restarts or runs. This will cause a long delay.
 
-The application is functional now with auth and CRUD Reviews.
-11. Go back to step 4 and comment out the function calls. Leaving this open will scrape sources every time server restarts or runs. This will cause a long delay.
-
-Optional steps:
+## Optional steps:
 12. Create users, and reviews using Postman
