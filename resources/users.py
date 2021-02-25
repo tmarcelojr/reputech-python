@@ -22,7 +22,6 @@ def test_user_resource():
 
 # Register User
 @users.route('/register', methods=['POST'])
-@cross_origin(supports_credentials=True)
 def register():
 	payload = request.get_json()
 	payload['username'] = payload['username'].lower()
@@ -53,7 +52,6 @@ def register():
 
 # Login
 @users.route('/login', methods=['POST'])
-@cross_origin(supports_credentials=True)
 def login():
 	payload = request.get_json()
 	payload['username'] = payload['username'].lower()
@@ -86,7 +84,6 @@ def login():
 
 # Update user
 @users.route('/<id>', methods=['PUT'])
-@cross_origin(supports_credentials=True)
 @login_required
 def update_user(id):
   payload = request.get_json()
@@ -114,7 +111,6 @@ def update_user(id):
 
 # Logout
 @users.route('/logout', methods=['GET'])
-@cross_origin(supports_credentials=True)
 @login_required
 def logout():
   logout_user()

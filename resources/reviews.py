@@ -16,7 +16,6 @@ reviews = Blueprint('reviews', 'reviews')
 
 # Index
 @reviews.route('/', methods=['GET'])
-@cross_origin(supports_credentials=True)
 def reviews_index():
 	reviews_dicts = [model_to_dict(review) for review in Review]
 	return jsonify(
@@ -27,7 +26,6 @@ def reviews_index():
 
 # Add review
 @reviews.route('/<company_id>', methods=['POST'])
-@cross_origin(supports_credentials=True)
 @login_required
 def add_review(company_id):
 	print("hit ADD REVIEW")
@@ -51,7 +49,6 @@ def add_review(company_id):
 
 # Delete review
 @reviews.route('/<id>', methods=['Delete'])
-@cross_origin(supports_credentials=True)
 @login_required
 def delete_review(id):
 	review_to_delete = Review.get_by_id(id)
@@ -72,7 +69,6 @@ def delete_review(id):
 
 # Update review
 @reviews.route('/<id>', methods=['PUT'])
-@cross_origin(supports_credentials=True)
 @login_required
 def update_review(id):
 	payload = request.get_json()

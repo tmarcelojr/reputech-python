@@ -24,7 +24,6 @@ companies = Blueprint('companies', 'companies')
 
 # Index
 @companies.route('/', methods=['GET'])
-@cross_origin(supports_credentials=True)
 def reviews_index():
 	companies_dicts = [model_to_dict(company) for company in Company]
 	return jsonify(
@@ -35,7 +34,6 @@ def reviews_index():
 
 # Add Company
 @companies.route('/', methods=['POST'])
-@cross_origin(supports_credentials=True)
 def add_company():
 	payload = request.get_json()
 	print(payload)
@@ -63,7 +61,6 @@ def show_company():
 
 # Seed companies list data
 @companies.route('/seed_data', methods=['POST'])
-@cross_origin(supports_credentials=True)
 def add_companies():
 	for idx, company in enumerate(company_names):
 		company = Company.create(
