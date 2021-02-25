@@ -14,7 +14,7 @@ DEBUG = True
 PORT = 8000
 app = Flask(__name__)
 api_v1 = Blueprint('API_v1', __name__)
-CORS(app, api_v1, origins=['http://localhost:3000', 'https://reputech-chicago.herokuapp.com', 'https://reputech-chicago.web.app'], supports_credentials=True)
+CORS(app, api_v1, origins=['http://localhost:3000', 'https://reputech-chicago.herokuapp.com', 'https://reputech-chicago.web.app/'], supports_credentials=True)
 
 # ==============================
 # 				LOGIN MANAGER
