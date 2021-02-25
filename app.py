@@ -1,5 +1,5 @@
 import os
-from flask import Flask, g, jsonify
+from flask import Flask, g, jsonify, session
 from flask_login import LoginManager
 from flask_cors import CORS, cross_origin
 from models import User, DoesNotExist, initialize, DATABASE
