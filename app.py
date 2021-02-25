@@ -13,8 +13,7 @@ from resources.collected_reviews import collected_reviews
 DEBUG = True
 PORT = 8000
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins":"*"}}, supports_credentials=True)
-app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app, resources={r"/*": {"origins":"*"}}, supports_credentials=True)
 
 # ==============================
 # 				LOGIN MANAGER
