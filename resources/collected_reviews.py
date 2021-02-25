@@ -28,6 +28,7 @@ collected_reviews = Blueprint('collected_reviews', 'collected_reviews')
 
 # List of collected reviews
 @collected_reviews.route('/', methods=['GET'])
+@cross_origin(supports_credentials=True)
 def collected_reviews_index():
 	con = sqlite3.connect('reputech.sqlite')
 	c = con.cursor()
@@ -46,6 +47,7 @@ def collected_reviews_index():
 
 # Add data to table
 @collected_reviews.route('/seed_data', methods=['POST'])
+@cross_origin(supports_credentials=True)
 def seed_data():
 	collected_reviews_data = []
 	sources = []
