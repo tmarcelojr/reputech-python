@@ -1,4 +1,4 @@
-import requests as req
+	import requests as req
 import asyncio
 from bs4 import BeautifulSoup as soup
 from glassdoor_company_links import *
