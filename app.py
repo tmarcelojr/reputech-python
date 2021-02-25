@@ -14,7 +14,7 @@ DEBUG = True
 PORT = 8000
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
-CORS(app, origins=['http://localhost:3000', 'https://reputech-chicago.herokuapp.com', 'https://reputech-chicago.web.app'], supports_credentials=True)
+CORS(app, resources=r'/api/*', origins=['http://localhost:3000', 'https://reputech-chicago.herokuapp.com', 'https://reputech-chicago.web.app'], supports_credentials=True)
 
 # ==============================
 # 				LOGIN MANAGER
