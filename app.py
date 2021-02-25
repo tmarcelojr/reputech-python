@@ -13,7 +13,7 @@ from resources.collected_reviews import collected_reviews
 DEBUG = True
 PORT = 8000
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
+CORS(app, origins=['http://localhost:3000', 'https://reputech-chicago.herokuapp.com'], supports_credentials=True)
 
 # ==============================
 # 				LOGIN MANAGER
@@ -41,12 +41,12 @@ def unauthorized():
 # 			REGISTER BLUEPRINTS
 # ==============================
 
-app.register_blueprint(users, url_prefix='api/v1/users')
-app.register_blueprint(reviews, url_prefix='api/v1/reviews')
-app.register_blueprint(companies, url_prefix='api/v1/companies')
-app.register_blueprint(sources, url_prefix='api/v1/sources')
-app.register_blueprint(favorites, url_prefix='api/v1/favorites')
-app.register_blueprint(collected_reviews, url_prefix='api/v1/collected_reviews')
+app.register_blueprint(users, url_prefix='/api/v1/users')
+app.register_blueprint(reviews, url_prefix='/api/v1/reviews')
+app.register_blueprint(companies, url_prefix='/api/v1/companies')
+app.register_blueprint(sources, url_prefix='/api/v1/sources')
+app.register_blueprint(favorites, url_prefix='/api/v1/favorites')
+app.register_blueprint(collected_reviews, url_prefix='/api/v1/collected_reviews')
 
 # ==============================
 # 			DATABASE CONNECTION
