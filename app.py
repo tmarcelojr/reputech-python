@@ -76,9 +76,9 @@ def index():
 # 			CONNECTION TO SERVER
 # ==============================
 
-# if 'ON_HEROKU' in os.environ: 
-#   print('\non heroku!')
-#   initialize()
+if 'ON_HEROKU' in os.environ: 
+  print('\non heroku!')
+  initialize()
 
 if __name__ == '__main__':
 	initialize()
