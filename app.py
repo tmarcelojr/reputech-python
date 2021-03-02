@@ -13,7 +13,7 @@ from resources.collected_reviews import collected_reviews
 DEBUG = True
 PORT = 8000
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*", "allow_headers": "*", "expose_headers": "*"}})
+CORS(app, origins=['http://localhost:8000', 'https://reputech-chicago.herokuapp.com'], supports_credentials=True)
 
 # ==============================
 # 				LOGIN MANAGER
@@ -76,9 +76,9 @@ def index():
 # 			CONNECTION TO SERVER
 # ==============================
 
-if 'ON_HEROKU' in os.environ: 
-  print('\non heroku!')
-  initialize()
+# if 'ON_HEROKU' in os.environ: 
+#   print('\non heroku!')
+#   initialize()
 
 if __name__ == '__main__':
 	initialize()
