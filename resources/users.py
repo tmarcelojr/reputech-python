@@ -52,7 +52,6 @@ def register():
 
 # Login
 @users.route('/login', methods=['POST'])
-@login_required
 def login():
 	payload = request.get_json()
 	payload['username'] = payload['username'].lower()
@@ -135,13 +134,16 @@ def delete_user(id):
 
 # Check current user
 @users.route('/logged_in', methods=['GET'])
+@login_required()
 def get_logged_in_user():
   if not current_user.is_authenticated:
-    return jsonify(
+    return current_app.login_manager.unauthorized(), jsonify(
       data={},
       message='No user is currently logged in',
       status=401
     ), 401
+
+
   else:
     user_dict = model_to_dict(current_user)
     user_dict.pop('password')
