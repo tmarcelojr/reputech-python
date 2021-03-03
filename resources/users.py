@@ -52,6 +52,7 @@ def register():
 
 # Login
 @users.route('/login', methods=['POST'])
+@login_required
 def login():
 	payload = request.get_json()
 	payload['username'] = payload['username'].lower()
