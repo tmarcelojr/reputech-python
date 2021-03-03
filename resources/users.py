@@ -137,7 +137,7 @@ def delete_user(id):
 @login_required()
 def get_logged_in_user():
   if not current_user.is_authenticated:
-    return current_app.login_manager.unauthorized(), jsonify(
+    return jsonify(
       data={},
       message='No user is currently logged in',
       status=401
