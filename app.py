@@ -25,7 +25,7 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(userid):
   try:
-    return User.get(User.id == userid)
+    return User.get(userid)
   except DoesNotExist:
     return None
 
