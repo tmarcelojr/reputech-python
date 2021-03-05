@@ -16,6 +16,7 @@ reviews = Blueprint('reviews', 'reviews')
 
 # Index
 @reviews.route('/', methods=['GET'])
+@cross_origin(allow_headers=['Content-Type'])
 def reviews_index():
 	reviews_dicts = [model_to_dict(review) for review in Review]
 	return jsonify(
@@ -65,7 +66,7 @@ def delete_review(id):
 				message='Users can only delete their own review',
 				status=403
 			), 403
-			
+
 # Update review
 @reviews.route('/<id>', methods=['PUT'])
 @login_required
