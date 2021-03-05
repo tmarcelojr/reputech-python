@@ -142,7 +142,7 @@ def delete_user(id):
 def get_logged_in_user():
 	if 'username' in session:
 		user = session=['username']
-		return user
+		return jsonify(user)
 
 
 
