@@ -62,7 +62,6 @@ def login():
 		if password_is_good:
 			login_user(user, remember=True) # Creates a cookie for the user to remain logged in
 			user_dict.pop('password')
-			flask.flash('Logged in successfully.')
 
 			return jsonify(
 					data=user_dict,
