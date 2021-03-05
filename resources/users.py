@@ -142,7 +142,7 @@ def delete_user(id):
 def get_logged_in_user():
 	if not current_user.is_authenticated:
 		user = session.get('username')
-		user_dict = model_to_dict(user)
+		print(f'we are logged in {user}')
 		return jsonify(
 			data=user_dict,
 			message='No user is currently logged in',
