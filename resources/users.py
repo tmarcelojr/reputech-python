@@ -64,6 +64,8 @@ def login():
 			login_user(user, remember=True) # Creates a cookie for the user to remain logged in
 			user_dict.pop('password')
 			print(f'successful login, {user_dict}')
+			session['username'] = user_dict['username']
+			print(session['username'])
 
 			return jsonify(
 					data=user_dict,
