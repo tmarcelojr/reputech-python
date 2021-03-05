@@ -60,8 +60,9 @@ def login():
 		user_dict = model_to_dict(user)
 		password_is_good = check_password_hash(user_dict['password'], payload['password'])
 		if password_is_good:
-			login_user(user_dict, remember=True) # Creates a cookie for the user to remain logged in
+			login_user(user, remember=True) # Creates a cookie for the user to remain logged in
 			user_dict.pop('password')
+			flask.flash('Logged in successfully.')
 
 			return jsonify(
 					data=user_dict,
