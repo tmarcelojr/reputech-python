@@ -141,7 +141,7 @@ def delete_user(id):
 @users.route('/logged_in', methods=['GET'])
 def get_logged_in_user():
 	if 'username' in session:
-		user = session=['username']
+		user = session['username']
 		return jsonify(user)
 
 
