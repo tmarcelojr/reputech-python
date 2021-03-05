@@ -94,6 +94,7 @@ def update_user(id):
     user.password = generate_password_hash(payload['password']) if 'password' in payload else None
     user.email = payload['email'] if 'email' in payload else None
     user.about_me = payload['about_me'] if 'about_me' in payload else None
+		user.authenticaeted = True
     user.save()
     user_dict = model_to_dict(user)
     user_dict.pop('password')
