@@ -144,7 +144,7 @@ def get_logged_in_user():
 		user = session.get('username')
 		print(f'we are logged in {user}')
 		return jsonify(
-			data=user_dict,
+			data={},
 			message='No user is currently logged in',
 			status=401
 			), 401
