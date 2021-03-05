@@ -148,7 +148,7 @@ def get_logged_in_user():
 		user_dict = model_to_dict(current_user)
 		user_dict.pop('password')
 		return jsonify(
-			data={user_dict},
+			data=user_dict,
 			message=f"Current user is {user_dict['username']}", 
 			status=200
 		), 200
