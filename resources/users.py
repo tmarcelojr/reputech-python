@@ -1,5 +1,5 @@
 from models import User, DoesNotExist
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, session
 from flask_bcrypt import generate_password_hash, check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
 from playhouse.shortcuts import model_to_dict
@@ -62,6 +62,7 @@ def login():
 		if password_is_good:
 			login_user(user, remember=True) # Creates a cookie for the user to remain logged in
 			user_dict.pop('password')
+			sesssion['username'] = user_dict['username']
 
 			return jsonify(
 					data=user_dict,
@@ -138,7 +139,7 @@ def delete_user(id):
 def get_logged_in_user():
 	if not current_user.is_authenticated:
 		return jsonify(
-			data={},
+			data= {session.get('username')},
 			message='No user is currently logged in',
 			status=401
 			), 401
