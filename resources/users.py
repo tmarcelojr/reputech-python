@@ -141,8 +141,8 @@ def delete_user(id):
 @users.route('/logged_in', methods=['GET'])
 def get_logged_in_user():
 	if not current_user.is_authenticated:
-		user = session.get('username')
-		print(f'we are logged in {session['username']}')
+		user = session['username']
+		print(f'we are logged in {user}')
 		return jsonify(
 			data={},
 			message='No user is currently logged in',
