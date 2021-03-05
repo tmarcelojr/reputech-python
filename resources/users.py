@@ -137,18 +137,7 @@ def delete_user(id):
 # Check current user
 @users.route('/logged_in', methods=['GET'])
 def get_logged_in_user():
-	if not current_user.is_authenticated:
-		return f'username is {session.get('username')}'
-		
-	else:
-		user_dict = model_to_dict(current_user)
-		user_dict.pop('password')
-		return jsonify(
-			data=user_dict,
-			message=f"Current user is {user_dict['username']}", 
-			status=200
-		), 200
-
+	return f'username is {session.get('username')}'
 
 
 
