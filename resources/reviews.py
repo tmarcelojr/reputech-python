@@ -65,8 +65,7 @@ def delete_review(id):
 				message='Users can only delete their own review',
 				status=403
 			), 403
-
-
+			
 # Update review
 @reviews.route('/<id>', methods=['PUT'])
 @login_required
