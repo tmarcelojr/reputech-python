@@ -13,7 +13,7 @@ from resources.collected_reviews import collected_reviews
 DEBUG = True
 PORT = 8000
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "https://reputech-chicago.herokuapp.com"}}, supports_credentials=True)
 
 # ==============================
 # 				LOGIN MANAGER
