@@ -137,7 +137,9 @@ def delete_user(id):
 # Check current user
 @users.route('/logged_in', methods=['GET'])
 def get_logged_in_user():
-	return f'username is {session.get('username')}'
+	return jsonify(
+		data= f'username is {session.get('username')}'
+	),200
 
 
 
