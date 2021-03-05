@@ -133,23 +133,23 @@ def delete_user(id):
   ), 200
 
 # Check current user
-@users.route('/logged_in', methods=['GET'])
-def get_logged_in_user():
-  if not current_user.is_authenticated:
-    return jsonify(
-      data={},
-      message='No user is currently logged in',
-      status=401
-    ), 401
+# @users.route('/logged_in', methods=['GET'])
+# def get_logged_in_user():
+#   if not current_user.is_authenticated:
+#     return jsonify(
+#       data={},
+#       message='No user is currently logged in',
+#       status=401
+#     ), 401
 
-	else:
-		user_dict = model_to_dict(current_user)
-		user_dict.pop('password')
-		return jsonify(
-			data=user_dict,
-			message=f"Current user is {user_dict['username']}", 
-			status=200
-		), 200
+# 	else:
+# 		user_dict = model_to_dict(current_user)
+# 		user_dict.pop('password')
+# 		return jsonify(
+# 			data=user_dict,
+# 			message=f"Current user is {user_dict['username']}", 
+# 			status=200
+# 		), 200
 
 
 
