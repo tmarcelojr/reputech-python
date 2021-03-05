@@ -140,7 +140,7 @@ def get_logged_in_user():
 	if not current_user.is_authenticated:
 		return jsonify(
 			data={},
-			message= f'No user is currently logged in {session.get('username')}',
+			message='No user is currently logged in',
 			status=401
 			), 401
 		
