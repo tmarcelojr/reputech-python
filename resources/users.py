@@ -1,5 +1,5 @@
 from models import User, DoesNotExist
-from flask import Blueprint, request, jsonify, session, url_for, redirect
+from flask import Blueprint, request, jsonify, session
 from flask_bcrypt import generate_password_hash, check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
 from playhouse.shortcuts import model_to_dict
@@ -63,11 +63,12 @@ def login():
 		if password_is_good:
 			login_user(user, remember=True) # Creates a cookie for the user to remain logged in
 			user_dict.pop('password')
-			print(f'successful login, {user_dict}')
-			session['username'] = user_dict['username']
-			print(session['username'])
 
-			return redirect(url_for('logged_in'))
+			return jsonify(
+					data=user_dict,
+	  			message=f"Successfully logged in as {user_dict['username']}",
+	  			status=200
+  			), 200
 		else:
   		# This means password is not correct.
 			return jsonify(
