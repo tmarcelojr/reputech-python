@@ -63,7 +63,7 @@ def login():
 		if password_is_good:
 			login_user(user, remember=True) # Creates a cookie for the user to remain logged in
 			user_dict.pop('password')
-
+			
 			return jsonify(
 					data=user_dict,
 	  			message=f"Successfully logged in as {user_dict['username']}",
@@ -137,10 +137,6 @@ def delete_user(id):
 @users.route('/logged_in', methods=['GET'])
 def get_logged_in_user():
 	if not current_user.is_authenticated:
-		user = session.get('username')
-		print('we are logging in', user)
-		user_dict = model_to_dict(current_user)
-		print('failed login', user_dict)
 		return jsonify(
 			data={},
 			message='No user is currently logged in',
@@ -150,7 +146,6 @@ def get_logged_in_user():
 	else:
 		user_dict = model_to_dict(current_user)
 		user_dict.pop('password')
-		
 		return jsonify(
 			data=user_dict,
 			message=f"Current user is {user_dict['username']}", 
