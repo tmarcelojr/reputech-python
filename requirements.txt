@@ -34,7 +34,7 @@ simplejson==3.17.2
 six==1.15.0
 soupsieve==2.0.1
 terminaltables==3.1.0
-urllib3==1.26.2
+urllib3==1.26.4
 virtualenv==20.1.0
 virtualenv-clone==0.5.4
 Werkzeug==1.0.1
