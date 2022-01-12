@@ -25,7 +25,7 @@ mccabe==0.6.1
 packaging==20.9
 peewee==3.14.0
 pip-upgrader==1.4.15
-pipenv==2020.11.4
+pipenv==2022.1.8
 pycparser==2.20
 pylint==1.9.4
 pyparsing==2.4.7
